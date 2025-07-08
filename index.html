@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PottyPath AI - Professional Autism Toileting Support System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .medical-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .crisis-button {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        .crisis-button:hover {
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            transform: translateY(-2px);
+        }
+        .protocol-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #4f46e5;
+        }
+        .assessment-card {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Header -->
+    <header class="medical-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">PottyPath AI</h1>
+                    <p class="text-blue-100 text-lg">Professional Autism Toileting Support System</p>
+                    <p class="text-blue-200 text-sm">Designed by Dr. Donna Vogel, PhD, BCBA</p>
+                </div>
+                <button onclick="showCrisisSupport()" class="crisis-button text-white px-6 py-3 rounded-lg font-bold transition-all duration-300">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>CRISIS SUPPORT
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-8 overflow-x-auto">
+                <button onclick="showSection('dashboard')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </button>
+                <button onclick="showSection('assessment')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-clipboard-list mr-2"></i>Assessment
+                </button>
+                <button onclick="showSection('protocols')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-book-medical mr-2"></i>Protocols
+                </button>
+                <button onclick="showSection('troubleshooting')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-tools mr-2"></i>Troubleshooting
+                </button>
+                <button onclick="showSection('progress')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-chart-line mr-2"></i>Progress
+                </button>
+                <button onclick="showSection('consultation')" class="nav-btn py-4 px-6 text-gray-700 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors whitespace-nowrap">
+                    <i class="fas fa-user-md mr-2"></i>Expert Chat
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section-content">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Current Status Dashboard</h2>
+                    
+                    <!-- Child Profile Summary -->
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-user-circle text-blue-600 mr-2"></i>Child Profile Summary
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4" id="profileSummary">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-medium text-gray-700">Name:</p>
+                                <p class="text-gray-600" id="childName">Not set - Complete assessment first</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-medium text-gray-700">Age:</p>
+                                <p class="text-gray-600" id="childAge">Not assessed</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-medium text-gray-700">Communication Level:</p>
+                                <p class="text-gray-600" id="childCommunication">Not assessed</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-medium text-gray-700">Current Phase:</p>
+                                <p class="text-gray-600" id="currentPhase">Assessment needed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Progress -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-calendar-check text-green-600 mr-2"></i>Recent Progress
+                        </h3>
+                        <div class="space-y-3" id="recentProgress">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">No progress entries yet</span>
+                                <button onclick="showSection('progress')" class="text-blue-600 hover:text-blue-800">Add Entry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Sidebar -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Quick Actions</h3>
+                    
+                    <div class="space-y-4">
+                        <button onclick="showSection('assessment')" class="w-full bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-clipboard-list mr-2"></i>Start Assessment
+                        </button>
+                        
+                        <button onclick="showSection('progress')" class="w-full bg-green-600 text-white py-4 px-6 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Log Today's Session
+                        </button>
+                        
+                        <button onclick="showSection('protocols')" class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg hover:bg-purple-700 transition-colors">
+                            <i class="fas fa-book-open mr-2"></i>View Current Protocol
+                        </button>
+                        
+                        <button onclick="showSection('consultation')" class="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg hover:bg-indigo-700 transition-colors">
+                            <i class="fas fa-comments mr-2"></i>Ask Expert
+                        </button>
+                    </div>
+
+                    <!-- Emergency Support Card -->
+                    <div class="mt-8 bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 class="text-lg font-semibold text-red-800 mb-3">
+                            <i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>Emergency Support
+                        </h4>
+                        <p class="text-red-700 text-sm mb-4">24/7 crisis support available for immediate help during challenging situations.</p>
+                        <button onclick="showCrisisSupport()" class="w-full crisis-button text-white py-3 px-4 rounded-lg font-medium transition-all duration-300">
+                            Access Crisis Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Section -->
+        <section id="assessment" class="section-content hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Comprehensive Assessment</h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="assessment-card p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Clinical Assessment Framework</h3>
+                    <p class="text-gray-600">Based on evidence-based ABA protocols and developmental milestones established in autism research (Cooper, Heron, & Heward, 2020). This assessment determines readiness and creates personalized intervention strategies.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Child Information</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Child's Name</label>
+                                <input type="text" id="assessmentName" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter child's name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                                <select id="assessmentAge" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select age range</option>
+                                    <option value="2-4">2-4 years</option>
+                                    <option value="5-8">5-8 years</option>
+                                    <option value="9-12">9-12 years</option>
+                                    <option value="13+">13+ years</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Communication Level</label>
+                                <select id="assessmentCommunication" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select communication level</option>
+                                    <option value="non-verbal">Non-verbal</option>
+                                    <option value="single-words">Single words</option>
+                                    <option value="two-word">Two-word phrases</option>
+                                    <option value="conversational">Full sentences</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Readiness Assessment</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="font-medium text-gray-700 mb-3">1. Physical Readiness: Can stay dry for 2+ hours consistently?</p>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="physical" value="4" class="mr-3">
+                                        <span class="text-gray-600">Yes, regularly</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="physical" value="3" class="mr-3">
+                                        <span class="text-gray-600">Sometimes</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="physical" value="2" class="mr-3">
+                                        <span class="text-gray-600">Rarely</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="physical" value="1" class="mr-3">
+                                        <span class="text-gray-600">Never</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="font-medium text-gray-700 mb-3">2. Motor Skills: Can walk steadily and climb onto toilet?</p>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="motor" value="4" class="mr-3">
+                                        <span class="text-gray-600">Yes, independently</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="motor" value="3" class="mr-3">
+                                        <span class="text-gray-600">With minimal support</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="motor" value="2" class="mr-3">
+                                        <span class="text-gray-600">Needs significant help</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="motor" value="1" class="mr-3">
+                                        <span class="text-gray-600">Unable</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="font-medium text-gray-700 mb-3">3. Communication: Can indicate toileting needs?</p>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="communication" value="4" class="mr-3">
+                                        <span class="text-gray-600">Yes, clearly</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="communication" value="3" class="mr-3">
+                                        <span class="text-gray-600">Sometimes indicates</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="communication" value="2" class="mr-3">
+                                        <span class="text-gray-600">Rarely indicates</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="communication" value="1" class="mr-3">
+                                        <span class="text-gray-600">No indication</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="font-medium text-gray-700 mb-3">4. Behavioral Interest: Shows interest in toilet activities?</p>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="interest" value="4" class="mr-3">
+                                        <span class="text-gray-600">High interest</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="interest" value="3" class="mr-3">
+                                        <span class="text-gray-600">Some interest</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="interest" value="2" class="mr-3">
+                                        <span class="text-gray-600">Mild interest</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="interest" value="1" class="mr-3">
+                                        <span class="text-gray-600">No interest</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="calculateAssessment()" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-calculator mr-2"></i>Calculate Assessment Results
+                    </button>
+                </div>
+
+                <div id="assessmentResults" class="mt-8 hidden">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Protocols Section -->
+        <section id="protocols" class="section-content hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Evidence-Based Protocol Library</h2>
+            
+            <div class="grid gap-6">
+                <div class="protocol-card p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-play-circle text-blue-600 mr-2"></i>Phase 1: Pre-Training Preparation
+                    </h3>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-blue-800 font-medium">Evidence Base: Azrin & Foxx (1974), modified for autism spectrum disorders by Kroeger & Sorensen-Burnworth (2009)</p>
+                    </div>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-3">Environmental Preparation (Days 1-7)</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                            <h5 class="font-medium text-gray-800 mb-2">1. Toilet Familiarization</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Allow child to sit on toilet fully clothed for 30 seconds</li>
+                                <li>Gradually increase to 2 minutes over 7 days</li>
+                                <li>Provide preferred activity during sitting</li>
+                                <li>Use visual timer to show duration</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                            <h5 class="font-medium text-gray-800 mb-2">2. Sensory Accommodation</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Assess for sensory sensitivities (temperature, texture, sound)</li>
+                                <li>Provide toilet seat reducer if needed</li>
+                                <li>Adjust lighting to child's preference</li>
+                                <li>Consider white noise machine for auditory sensitivity</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-purple-500">
+                            <h5 class="font-medium text-gray-800 mb-2">3. Routine Establishment</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Create visual schedule showing toilet routine</li>
+                                <li>Practice routine steps without expectation of voiding</li>
+                                <li>Establish consistent timing (every 30 minutes initially)</li>
+                                <li>Use same verbal cues each time</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 bg-yellow-50 p-4 rounded-lg">
+                        <h5 class="font-medium text-gray-800 mb-2">Data Collection Requirements:</h5>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Daily sitting tolerance (duration in seconds)</li>
+                            <li>Behavioral responses (calm, resistant, distressed)</li>
+                            <li>Sensory reactions noted</li>
+                            <li>Preferred reinforcers identified</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 bg-green-50 p-4 rounded-lg">
+                        <h5 class="font-medium text-gray-800 mb-2">Advancement Criteria:</h5>
+                        <p class="text-gray-600 mb-2">Move to Initial Training Phase when child can:</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Sit calmly for 2 minutes on 5 consecutive occasions</li>
+                            <li>Follow toilet routine with minimal prompting</li>
+                            <li>Show no signs of distress during sitting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="protocol-card p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-step-forward text-green-600 mr-2"></i>Phase 2: Initial Training Protocol
+                    </h3>
+                    <div class="bg-green-50 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-green-800 font-medium">Evidence Base: Rapid toilet training procedures adapted for autism (Cicero & Pfadt, 2002)</p>
+                    </div>
+                    
+                    <h4 class="font-semibold text-gray-800 mb-3">Implementation Steps</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                            <h5 class="font-medium text-gray-800 mb-2">Scheduled Sitting Protocol</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Initial schedule: Every 30 minutes during wake hours</li>
+                                <li>Sitting duration: 3-5 minutes maximum</li>
+                                <li>Use consistent verbal cue: "Time to use the toilet"</li>
+                                <li>Maintain calm, matter-of-fact tone</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-yellow-500">
+                            <h5 class="font-medium text-gray-800 mb-2">Reinforcement System</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Immediate praise for sitting compliance</li>
+                                <li>High-value reinforcer for any voiding in toilet</li>
+                                <li>Neutral response to accidents (no punishment)</li>
+                                <li>Consistent reinforcement schedule</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section id="troubleshooting" class="section-content hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Professional Troubleshooting Guide</h2>
+            
+            <div class="grid gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-red-700 mb-4">
+                        <i class="fas fa-exclamation-circle mr-2"></i>Resistance to Sitting
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-3">Assessment Questions:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Is the child showing signs of distress or fear?</li>
+                                <li>Are there sensory issues with the toilet seat or bathroom?</li>
+                                <li>Is the schedule too demanding for the child's current level?</li>
+                                <li>Are there competing preferred activities happening?</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h5 class="font-medium text-blue-800 mb-2">Sensory Modifications</h5>
+                                <ul class="list-disc list-inside text-blue-700 text-sm space-y-1">
+                                    <li>Provide toilet seat insert or cushion</li>
+                                    <li>Adjust bathroom lighting</li>
+                                    <li>Use noise-canceling headphones</li>
+                                    <li>Offer fidget toy or preferred item</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h5 class="font-medium text-green-800 mb-2">Schedule Modifications</h5>
+                                <ul class="list-disc list-inside text-green-700 text-sm space-y-1">
+                                    <li>Reduce sitting duration to 1-2 minutes</li>
+                                    <li>Increase time between sits</li>
+                                    <li>Use visual timer to show end time</li>
+                                    <li>Offer choice of two sit times</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h5 class="font-medium text-purple-800 mb-2">Motivation Modifications</h5>
+                                <ul class="list-disc list-inside text-purple-700 text-sm space-y-1">
+                                    <li>Increase reinforcement value</li>
+                                    <li>Provide reinforcement for sitting, not just voiding</li>
+                                    <li>Use preferred activities as bathroom entertainment</li>
+                                    <li>Create special bathroom-only reinforcers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-orange-700 mb-4">
+                        <i class="fas fa-undo mr-2"></i>Regression After Progress
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-orange-800 mb-3">Common Causes:</h4>
+                            <ul class="list-disc list-inside text-orange-700 space-y-1">
+                                <li>Environmental changes (new home, school, routine)</li>
+                                <li>Medical issues (constipation, UTI, illness)</li>
+                                <li>Developmental changes or growth spurts</li>
+                                <li>Stress or anxiety from other sources</li>
+                                <li>Inconsistency in approach between caregivers</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800 mb-3">Intervention Steps:</h4>
+                            <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                                <li><strong>Rule out medical causes:</strong> Consult pediatrician for physical examination</li>
+                                <li><strong>Return to basics:</strong> Go back to previous successful protocol level</li>
+                                <li><strong>Increase support:</strong> More frequent prompts, higher reinforcement</li>
+                                <li><strong>Address environmental factors:</strong> Identify and modify stressors</li>
+                                <li><strong>Maintain consistency:</strong> Ensure all caregivers use same approach</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section-content hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Progress Tracking & Updates</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-plus-circle text-green-600 mr-2"></i>Log Today's Session
+                    </h3>
+                    
+                    <form id="progressForm" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                                <input type="date" id="progressDate" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Session Type</label>
+                                <select id="sessionType" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select session type</option>
+                                    <option value="scheduled">Scheduled sit</option>
+                                    <option value="successful">Successful void</option>
+                                    <option value="accident">Accident</option>
+                                    <option value="refusal">Refusal</option>
+                                    <option value="crisis">Crisis</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Duration (minutes)</label>
+                                <input type="number" id="duration" min="0" max="60" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Success Level</label>
+                                <select id="successLevel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select success level</option>
+                                    <option value="complete">Complete success</option>
+                                    <option value="partial">Partial success</option>
+                                    <option value="attempted">Attempted</option>
+                                    <option value="refused">Refused</option>
+                                    <option value="crisis">Crisis</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Child's Mood</label>
+                            <select id="childMood" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select mood</option>
+                                <option value="calm">Calm/cooperative</option>
+                                <option value="neutral">Neutral</option>
+                                <option value="anxious">Anxious</option>
+                                <option value="resistant">Resistant</option>
+                                <option value="distressed">Distressed</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Session Notes</label>
+                            <textarea id="sessionNotes" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Detailed notes about the session..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                            <i class="fas fa-save mr-2"></i>Save Progress Entry
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-chart-line text-blue-600 mr-2"></i>Progress Visualization
+                    </h3>
+                    <div style="height: 400px;">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reflection Questions -->
+            <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                    <i class="fas fa-lightbulb text-yellow-600 mr-2"></i>Reflection Questions
+                </h3>
+                <p class="text-gray-600 mb-4">Consider these questions to help identify patterns and improve your approach:</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What time of day was this session?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., After breakfast, before bed">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What was your child doing before the toileting attempt?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., Playing, eating, watching TV">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Were there any environmental changes today?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., New caregiver, different location">
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What worked well during this session?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., Visual timer, preferred toy">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What would you change for next time?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., Shorter duration, different reinforcer">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Any new behaviors or concerns noticed?</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="e.g., New verbal protests, physical resistance">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expert Consultation Section -->
+        <section id="consultation" class="section-content hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Expert Consultation</h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="bg-purple-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-2">
+                        <i class="fas fa-user-md text-purple-600 mr-2"></i>Consult with Dr. Donna Vogel, PhD, BCBA
+                    </h3>
+                    <p class="text-purple-700">Get expert guidance based on 15+ years of clinical experience in autism intervention and toileting independence.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Context Information</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Child's Age Range</label>
+                                <select id="consultAge" class="w-full p-2 border border-gray-300 rounded-lg">
+                                    <option value="">Select age</option>
+                                    <option value="2-4 years">2-4 years</option>
+                                    <option value="5-8 years">5-8 years</option>
+                                    <option value="9-12 years">9-12 years</option>
+                                    <option value="13+ years">13+ years</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Communication Level</label>
+                                <select id="consultCommunication" class="w-full p-2 border border-gray-300 rounded-lg">
+                                    <option value="">Select level</option>
+                                    <option value="Non-verbal">Non-verbal</option>
+                                    <option value="Limited verbal">Limited verbal</option>
+                                    <option value="Conversational">Conversational</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Current Situation</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Current Phase</label>
+                                <select id="consultPhase" class="w-full p-2 border border-gray-300 rounded-lg">
+                                    <option value="">Select phase</option>
+                                    <option value="Pre-training">Pre-training</option>
+                                    <option value="Initial training">Initial training</option>
+                                    <option value="Skill building">Skill building</option>
+                                    <option value="Independence">Independence</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Urgency Level</label>
+                                <select id="consultUrgency" class="w-full p-2 border border-gray-300 rounded-lg">
+                                    <option value="">Select urgency</option>
+                                    <option value="General guidance">General guidance</option>
+                                    <option value="Specific challenge">Specific challenge</option>
+                                    <option value="Crisis situation">Crisis situation</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Describe your situation or question in detail:</label>
+                    <textarea id="consultQuestion" rows="6" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500" placeholder="Example: My 6-year-old autistic son has been toilet trained for a year but suddenly started having accidents again. He seems anxious about the bathroom and won't sit on the toilet. What should I do?"></textarea>
+                </div>
+                
+                <button onclick="getExpertGuidance()" class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                    <i class="fas fa-comments mr-2"></i>Get Expert Guidance
+                </button>
+                
+                <div id="expertResponse" class="mt-6 hidden">
+                    <!-- Expert response will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Crisis Support Modal -->
+        <div id="crisisModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+                    <div class="bg-red-600 text-white p-6 rounded-t-lg">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl font-bold">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>Crisis Support
+                            </h2>
+                            <button onclick="hideCrisisSupport()" class="text-white hover:text-gray-200">
+                                <i class="fas fa-times text-2xl"></i>
+                            </button>
+                        </div>
+                        <p class="text-red-100 mt-2">You are not alone. Crisis situations are common and manageable.</p>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Crisis Type:</h3>
+                                <div class="space-y-3">
+                                    <button onclick="showCrisisProtocol('meltdown')" class="w-full text-left p-4 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors">
+                                        <i class="fas fa-exclamation-circle text-red-600 mr-2"></i>
+                                        <strong>Severe Bathroom Meltdown</strong>
+                                        <p class="text-sm text-gray-600 mt-1">Immediate help for meltdowns during toileting</p>
+                                    </button>
+                                    <button onclick="showCrisisProtocol('refusal')" class="w-full text-left p-4 bg-orange-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors">
+                                        <i class="fas fa-ban text-orange-600 mr-2"></i>
+                                        <strong>Complete Toileting Refusal</strong>
+                                        <p class="text-sm text-gray-600 mt-1">When child refuses all toileting attempts</p>
+                                    </button>
+                                    <button onclick="showCrisisProtocol('regression')" class="w-full text-left p-4 bg-yellow-50 border border-yellow-200 rounded-lg hover:bg-yellow-100 transition-colors">
+                                        <i class="fas fa-undo text-yellow-600 mr-2"></i>
+                                        <strong>Sudden Regression</strong>
+                                        <p class="text-sm text-gray-600 mt-1">Loss of previously acquired skills</p>
+                                    </button>
+                                    <button onclick="showCrisisProtocol('aggression')" class="w-full text-left p-4 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors">
+                                        <i class="fas fa-fist-raised text-purple-600 mr-2"></i>
+                                        <strong>Aggressive Behavior</strong>
+                                        <p class="text-sm text-gray-600 mt-1">Physical aggression during toileting</p>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="crisisProtocolDisplay">
+                                <div class="bg-blue-50 p-6 rounded-lg text-center">
+                                    <i class="fas fa-hand-holding-heart text-blue-600 text-4xl mb-4"></i>
+                                    <h3 class="text-lg font-semibold text-blue-800 mb-2">Professional Support Available</h3>
+                                    <p class="text-blue-700">Select a crisis type on the left to get immediate, step-by-step guidance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Set today's date for progress form
+            const today = new Date().toISOString().split('T')[0];
+            const progressDate = document.getElementById('progressDate');
+            if (progressDate) {
+                progressDate.value = today;
+            }
+            
+            // Load saved data
+            loadSavedData();
+            
+            // Initialize progress chart
+            initializeProgressChart();
+            
+            // Set active navigation
+            setActiveNav('dashboard');
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => section.classList.add('hidden'));
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+            
+            // Update navigation
+            setActiveNav(sectionName);
+        }
+
+        function setActiveNav(sectionName) {
+            // Remove active class from all nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('border-blue-600', 'text-blue-600');
+                btn.classList.add('border-transparent', 'text-gray-700');
+            });
+            
+            // Add active class to current nav button
+            const activeBtn = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-gray-700');
+                activeBtn.classList.add('border-blue-600', 'text-blue-600');
+            }
+        }
+
+        function calculateAssessment() {
+            const name = document.getElementById('assessmentName').value;
+            const age = document.getElementById('assessmentAge').value;
+            const communication = document.getElementById('assessmentCommunication').value;
+            
+            // Get scores from radio buttons
+            const physical = parseInt(document.querySelector('input[name="physical"]:checked')?.value || 0);
+            const motor = parseInt(document.querySelector('input[name="motor"]:checked')?.value || 0);
+            const communicationScore = parseInt(document.querySelector('input[name="communication"]:checked')?.value || 0);
+            const interest = parseInt(document.querySelector('input[name="interest"]:checked')?.value || 0);
+            
+            const totalScore = physical + motor + communicationScore + interest;
+            const maxScore = 16;
+            const percentage = Math.round((totalScore / maxScore) * 100);
+            
+            // Save assessment data
+            const assessmentData = {
+                name, age, communication, totalScore, percentage,
+                physical, motor, communicationScore, interest,
+                date: new Date().toISOString()
+            };
+            
+            localStorage.setItem('childAssessment', JSON.stringify(assessmentData));
+            
+            // Update profile summary
+            updateProfileSummary(assessmentData);
+            
+            // Show results
+            showAssessmentResults(assessmentData);
+        }
+
+        function showAssessmentResults(data) {
+            let recommendation, phase, nextSteps;
+            
+            if (data.percentage >= 75) {
+                recommendation = "Ready for Initial Training";
+                phase = "Phase 2: Initial Training Protocol";
+                nextSteps = "Begin scheduled sitting protocol with reinforcement system.";
+            } else if (data.percentage >= 50) {
+                recommendation = "Needs Pre-Training Preparation";
+                phase = "Phase 1: Pre-Training Preparation";
+                nextSteps = "Focus on environmental preparation and routine establishment.";
+            } else {
+                recommendation = "Extended Preparation Required";
+                phase = "Extended Pre-Training";
+                nextSteps = "Work on foundational skills before formal toileting training.";
+            }
+            
+            const resultsHTML = `
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h4 class="text-xl font-semibold text-blue-800 mb-4">Assessment Results for ${data.name}</h4>
+                    <div class="grid md:grid-cols-3 gap-4 mb-4">
+                        <div class="bg-white p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-blue-600">${data.totalScore}/16</div>
+                            <div class="text-gray-600">Total Score</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-green-600">${data.percentage}%</div>
+                            <div class="text-gray-600">Readiness Level</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg text-center">
+                            <div class="text-lg font-bold text-purple-600">${recommendation}</div>
+                            <div class="text-gray-600">Recommendation</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <h5 class="font-semibold text-gray-800 mb-2">Recommended Starting Phase:</h5>
+                        <p class="text-blue-700 font-medium">${phase}</p>
+                        <p class="text-gray-600 mt-2">${nextSteps}</p>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button onclick="showSection('protocols')" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            View Recommended Protocols
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            const resultsDiv = document.getElementById('assessmentResults');
+            resultsDiv.innerHTML = resultsHTML;
+            resultsDiv.classList.remove('hidden');
+        }
+
+        function updateProfileSummary(data) {
+            document.getElementById('childName').textContent = data.name;
+            document.getElementById('childAge').textContent = data.age;
+            document.getElementById('childCommunication').textContent = data.communication;
+            
+            let phase = "Pre-training preparation";
+            if (data.percentage >= 75) phase = "Initial training ready";
+            else if (data.percentage >= 50) phase = "Pre-training preparation";
+            else phase = "Extended preparation needed";
+            
+            document.getElementById('currentPhase').textContent = phase;
+        }
+
+        function loadSavedData() {
+            // Load child assessment
+            const savedAssessment = localStorage.getItem('childAssessment');
+            if (savedAssessment) {
+                const data = JSON.parse(savedAssessment);
+                updateProfileSummary(data);
+            }
+            
+            // Load progress entries
+            const savedProgress = localStorage.getItem('progressEntries');
+            if (savedProgress) {
+                const entries = JSON.parse(savedProgress);
+                updateRecentProgress(entries);
+                updateProgressChart(entries);
+            }
+        }
+
+        function saveProgressEntry(event) {
+            event.preventDefault();
+            
+            const entry = {
+                date: document.getElementById('progressDate').value,
+                sessionType: document.getElementById('sessionType').value,
+                duration: document.getElementById('duration').value,
+                successLevel: document.getElementById('successLevel').value,
+                childMood: document.getElementById('childMood').value,
+                notes: document.getElementById('sessionNotes').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Get existing entries
+            const existingEntries = JSON.parse(localStorage.getItem('progressEntries') || '[]');
+            existingEntries.push(entry);
+            
+            // Save to localStorage
+            localStorage.setItem('progressEntries', JSON.stringify(existingEntries));
+            
+            // Update displays
+            updateRecentProgress(existingEntries);
+            updateProgressChart(existingEntries);
+            
+            // Reset form
+            document.getElementById('progressForm').reset();
+            document.getElementById('progressDate').value = new Date().toISOString().split('T')[0];
+            
+            // Show success message
+            alert('Progress entry saved successfully!');
+        }
+
+        function updateRecentProgress(entries) {
+            const recentDiv = document.getElementById('recentProgress');
+            if (entries.length === 0) return;
+            
+            const recent = entries.slice(-5).reverse();
+            const html = recent.map(entry => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div>
+                        <span class="font-medium">${entry.date}</span>
+                        <span class="text-gray-600 ml-2">${entry.sessionType}</span>
+                        <span class="text-green-600 ml-2">${entry.successLevel}</span>
+                    </div>
+                    <span class="text-sm text-gray-500">${entry.duration}min</span>
+                </div>
+            `).join('');
+            
+            recentDiv.innerHTML = html;
+        }
+
+        function initializeProgressChart() {
+            const ctx = document.getElementById('progressChart');
+            if (!ctx) return;
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Success Rate',
+                        data: [],
+                        borderColor: 'rgb(59, 130, 246)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateProgressChart(entries) {
+            const ctx = document.getElementById('progressChart');
+            if (!ctx || entries.length === 0) return;
+            
+            // Calculate weekly success rates
+            const weeklyData = {};
+            entries.forEach(entry => {
+                const week = getWeekKey(new Date(entry.date));
+                if (!weeklyData[week]) {
+                    weeklyData[week] = { total: 0, success: 0 };
+                }
+                weeklyData[week].total++;
+                if (entry.successLevel === 'complete' || entry.successLevel === 'partial') {
+                    weeklyData[week].success++;
+                }
+            });
+            
+            const labels = Object.keys(weeklyData).sort();
+            const data = labels.map(week => 
+                Math.round((weeklyData[week].success / weeklyData[week].total) * 100)
+            );
+            
+            const chart = Chart.getChart(ctx);
+            chart.data.labels = labels;
+            chart.data.datasets[0].data = data;
+            chart.update();
+        }
+
+        function getWeekKey(date) {
+            const year = date.getFullYear();
+            const week = Math.ceil(((date - new Date(year, 0, 1)) / 86400000 + 1) / 7);
+            return `${year}-W${week}`;
+        }
+
+        function getExpertGuidance() {
+            const age = document.getElementById('consultAge').value;
+            const communication = document.getElementById('consultCommunication').value;
+            const phase = document.getElementById('consultPhase').value;
+            const urgency = document.getElementById('consultUrgency').value;
+            const question = document.getElementById('consultQuestion').value;
+            
+            if (!question.trim()) {
+                alert('Please describe your situation before consulting.');
+                return;
+            }
+            
+            // Simulate expert response (in real app, this would call OpenAI API)
+            const response = generateExpertResponse(question, { age, communication, phase, urgency });
+            
+            const responseHTML = `
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-purple-800 mb-4">
+                        <i class="fas fa-user-md mr-2"></i>Expert Response from Dr. Donna Vogel, PhD, BCBA
+                    </h4>
+                    <div class="prose text-gray-700">
+                        ${response}
+                    </div>
+                    <div class="mt-4 p-4 bg-white rounded-lg">
+                        <p class="text-sm text-gray-600">
+                            <strong>Consultation Context:</strong> ${age} child, ${communication} communication, ${phase} phase, ${urgency} urgency
+                        </p>
+                    </div>
+                </div>
+            `;
+            
+            const responseDiv = document.getElementById('expertResponse');
+            responseDiv.innerHTML = responseHTML;
+            responseDiv.classList.remove('hidden');
+        }
+
+        function generateExpertResponse(question, context) {
+            // This is a simplified response generator. In production, this would use OpenAI API
+            return `
+                <p><strong>Clinical Assessment:</strong> Based on your description and the child's profile (${context.age}, ${context.communication} communication level), this situation requires a systematic approach.</p>
+                
+                <p><strong>Immediate Recommendations:</strong></p>
+                <ul>
+                    <li>First, rule out any medical causes by consulting with your pediatrician</li>
+                    <li>Return to the last successful protocol level and rebuild confidence</li>
+                    <li>Increase environmental supports and reduce demands temporarily</li>
+                    <li>Implement a functional behavior assessment to identify triggers</li>
+                </ul>
+                
+                <p><strong>Evidence-Based Strategy:</strong> Research shows that regression in autism toileting is common and typically responds well to structured intervention. I recommend implementing a modified Azrin & Foxx protocol adapted for autism spectrum needs.</p>
+                
+                <p><strong>Next Steps:</strong></p>
+                <ol>
+                    <li>Document current behaviors for 3-5 days to establish baseline</li>
+                    <li>Modify environment to reduce anxiety triggers</li>
+                    <li>Implement positive reinforcement schedule for any toilet-related compliance</li>
+                    <li>Gradually reintroduce expectations as confidence rebuilds</li>
+                </ol>
+                
+                <p><strong>When to Seek Additional Support:</strong> If behaviors persist beyond 2 weeks or escalate, consider consultation with a BCBA for individualized behavior plan development.</p>
+                
+                <p class="text-sm text-purple-700 font-medium">Remember: Every child's journey is unique. Stay consistent, patient, and focused on building positive associations with toileting.</p>
+            `;
+        }
+
+        function showCrisisSupport() {
+            document.getElementById('crisisModal').classList.remove('hidden');
+        }
+
+        function hideCrisisSupport() {
+            document.getElementById('crisisModal').classList.add('hidden');
+        }
+
+        function showCrisisProtocol(type) {
+            const protocols = {
+                meltdown: `
+                    <div class="bg-red-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-800 mb-4">Severe Bathroom Meltdown Protocol</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-500">
+                                <h4 class="font-semibold text-red-800 mb-2">Step 1: Safety First (0-2 minutes)</h4>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Remove all demands immediately</li>
+                                    <li>Ensure child's physical safety</li>
+                                    <li>Move to calm space if possible</li>
+                                    <li>Do not try to reason or negotiate</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-orange-500">
+                                <h4 class="font-semibold text-orange-800 mb-2">Step 2: Support Regulation (2-10 minutes)</h4>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Use deep pressure if child tolerates touch</li>
+                                    <li>Offer preferred sensory items</li>
+                                    <li>Reduce environmental stimulation</li>
+                                    <li>Use calm, monotone voice</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-yellow-500">
+                                <h4 class="font-semibold text-yellow-800 mb-2">Step 3: Post-Crisis Recovery (10-30 minutes)</h4>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Allow complete recovery time</li>
+                                    <li>Offer comfort items/activities</li>
+                                    <li>Do not discuss the incident yet</li>
+                                    <li>Monitor for signs of illness or discomfort</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                                <h4 class="font-semibold text-green-800 mb-2">Step 4: Analysis and Planning (Later)</h4>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <li>Review antecedents that led to meltdown</li>
+                                    <li>Identify triggers and warning signs</li>
+                                    <li>Modify toileting approach as needed</li>
+                                    <li>Consider consulting BCBA if pattern continues</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 bg-red-100 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-800 mb-2">When to Seek Additional Help:</h5>
+                            <ul class="list-disc list-inside text-red-700 space-y-1">
+                                <li>Meltdowns lasting >30 minutes</li>
+                                <li>Self-injurious behavior</li>
+                                <li>Aggressive behavior toward others</li>
+                                <li>Complete refusal lasting >48 hours</li>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                refusal: `
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-orange-800 mb-4">Complete Toileting Refusal Protocol</h3>
+                        <div class="prose text-gray-700">
+                            <p><strong>Immediate Actions:</strong></p>
+                            <ul>
+                                <li>Stop all toileting demands temporarily (24-48 hours)</li>
+                                <li>Return to previous successful level</li>
+                                <li>Assess for medical issues (constipation, UTI, illness)</li>
+                                <li>Identify environmental or routine changes</li>
+                            </ul>
+                            <p><strong>Rebuilding Strategy:</strong> Start with non-contingent positive interactions in bathroom environment...</p>
+                        </div>
+                    </div>
+                `,
+                regression: `
+                    <div class="bg-yellow-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-yellow-800 mb-4">Sudden Regression Protocol</h3>
+                        <div class="prose text-gray-700">
+                            <p><strong>Assessment Priority:</strong></p>
+                            <ul>
+                                <li>Rule out medical causes immediately</li>
+                                <li>Document current behaviors vs. previous success</li>
+                                <li>Identify recent changes in environment, routine, or stressors</li>
+                                <li>Review consistency across all caregivers</li>
+                            </ul>
+                            <p><strong>Intervention Approach:</strong> Systematic return to previously successful protocols...</p>
+                        </div>
+                    </div>
+                `,
+                aggression: `
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-purple-800 mb-4">Aggressive Behavior Protocol</h3>
+                        <div class="prose text-gray-700">
+                            <p><strong>Safety First:</strong></p>
+                            <ul>
+                                <li>Ensure safety of child and others</li>
+                                <li>Remove all demands immediately</li>
+                                <li>Implement crisis de-escalation techniques</li>
+                                <li>Document antecedents and consequences</li>
+                            </ul>
+                            <p><strong>Professional Consultation Required:</strong> Aggressive behavior during toileting requires immediate BCBA assessment...</p>
+                        </div>
+                    </div>
+                `
+            };
+            
+            const displayDiv = document.getElementById('crisisProtocolDisplay');
+            displayDiv.innerHTML = protocols[type] || '<p>Protocol not found</p>';
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressForm = document.getElementById('progressForm');
+            if (progressForm) {
+                progressForm.addEventListener('submit', saveProgressEntry);
+            }
+        });
+
+        // Handle clicks outside crisis modal
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('crisisModal');
+            if (event.target === modal) {
+                hideCrisisSupport();
+            }
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95bfac60dc508c2d","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDlm6adAJLyQALi1aP%2FDZnWJ1tWvuRTGh40X7KxiPk4hLAooWiUcenQlNEPvh5cMO%2FutRU%2F%2BJlyLH2c9Kp6yOZpjGcSmxy3K9WbT8ny9dy4UoB5ESCsPfWE8M%2FCEdkJa8iaqQIYzVELJfs7oCzfT8fQenGZ2xWAFYspEo71LodPV6sDTit55ThPBDy6QrsvyjhPNYh0GOfhTJDovPDIIFd1MN%2BDVm1lge1ahuJxjCYCvIxdGAdefNn5CV3HqXE%2Fliu9AWUM0mw0poAFhY5MWgG%2FO55RxP0Tg%2B24%2FpWQBavjJX9CH6zyBWwN9gHRiHpexmqwUUO16OqmH1anhzgk3rExgiVLtbcaF1PvwDNGSbxP2CZVlZuAtE1sk7q2Tsm3jVnomqn8hdrJSVRcgvH7ifvtXgyTSz2EFvrDhE6k6yEMSfkPyN3uTmHsjsqbs8RDD9tIq7BgAvEFWCLCQrPfxRC22IhEVh0CIdWCXDDPXshqUpOT2Hgb1Y2CkJSwuWxnM8vQ%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDlm6adAJLyQALi1aP/DZnWJ1tWvuRTGh40X7KxiPk4hLAooWiUcenQlNEPvh5cMO/utRU/+JlyLH2c9Kp6yOZpjGcSmxy3K9WbT8ny9dy4UoB5ESCsPfWE8M/CEdkJa8iaqQIYzVELJfs7oCzfT8fQenGZ2xWAFYspEo71LodPV6sDTit55ThPBDy6QrsvyjhPNYh0GOfhTJDovPDIIFd1MN+DVm1lge1ahuJxjCYCvIxdGAdefNn5CV3HqXE/liu9AWUM0mw0poAFhY5MWgG/O55RxP0Tg+24/pWQBavjJX9CH6zyBWwN9gHRiHpexmqwUUO16OqmH1anhzgk3rExgiVLtbcaF1PvwDNGSbxP2CZVlZuAtE1sk7q2Tsm3jVnomqn8hdrJSVRcgvH7ifvtXgyTSz2EFvrDhE6k6yEMSfkPyN3uTmHsjsqbs8RDD9tIq7BgAvEFWCLCQrPfxRC22IhEVh0CIdWCXDDPXshqUpOT2Hgb1Y2CkJSwuWxnM8vQ==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
